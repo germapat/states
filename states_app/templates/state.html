@@ -1,0 +1,25 @@
+{% extends 'adminlte/base.html' %}
+
+{% block title %}States{% endblock %}
+{% block content %}
+<form method="POST" action="{% url 'states_app:states'%}">
+        {% csrf_token %} 
+    <div class="form-group">
+      <label for="code">Código:</label>
+      <input type="number" class="form-control" name="code" id="code">
+    </div>
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" name="name" class="form-control" id="name">
+    </div>
+    <div class="form-group">
+        <label for="name">Municipio:</label>
+        <select multiple class="form-control" name="municipality" id="municipality">
+          {% for value in municipality %}
+            <option value="{{value.id}}">{{value.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+{% endblock %}

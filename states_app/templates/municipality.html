@@ -1,0 +1,17 @@
+{% extends 'adminlte/base.html' %}
+
+{% block title %}States{% endblock %}
+{% block content %}
+<form method="POST" action="{% url 'states_app:municipality'%}">
+        {% csrf_token %} 
+    <div class="form-group">
+      <label for="code">Código:</label>
+      <input type="number" class="form-control" name="code" id="code">
+    </div>
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" name="name" class="form-control" id="name">
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+{% endblock %}

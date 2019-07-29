@@ -1,0 +1,33 @@
+{% extends 'adminlte/base.html' %}
+
+{% block title %}Municipaly list{% endblock %}
+{% block content %}
+<table id="tblMunicipality" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Código</th>
+                <th>Estado</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for value in municipality %}
+            <tr>
+                <td>{{value.name}}</td>
+                <td>{{value.code}}</td>
+                {% if value.status%}
+                <td>Activo</td>
+                {% else %}
+                <td>InaActivo</td>
+                {% endif%}
+                <td><a href="{% url 'states_app:municipality_get_edit' value.id%}">Editar</a>
+                    <a href="{% url 'states_app:municipality_delete' value.id%}">{% if value.status%}Eliminar{% else %}Activar {% endif %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody> 
+</table> 
+{% endblock %}
+
